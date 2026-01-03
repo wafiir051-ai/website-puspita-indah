@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lembaga Pelatihan Kerja Puspita Indah</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #c2185b;
+            --secondary: #7b1fa2;
+            --accent: #ff4081;
+            --light: #fce4ec;
+            --dark: #4a148c;
+            --text: #333333;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --gradient: linear-gradient(135deg, #c2185b 0%, #7b1fa2 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            color: #ffcc00;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .nav-desktop ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        .nav-desktop a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            padding: 8px 15px;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+        
+        .nav-desktop a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 35px;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 64, 129, 0.4);
+        }
+        
+        .cta-button:hover {
+            background-color: #ff1a66;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 64, 129, 0.6);
+        }
+        
+        /* Services */
+        .services {
+            padding: 100px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: #666;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .service-img {
+            height: 220px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .service-icon {
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+        
+        .service-content p {
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        /* Gallery */
+        .gallery {
+            padding: 100px 0;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        /* Contact */
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 100%);
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .contact-info h3 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-icon {
+            background: var(--gradient);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-text h4 {
+            color: var(--secondary);
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+        
+        .contact-text p {
+            color: #555;
+        }
+        
+        .map-container {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 350px;
+        }
+        
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #f5f5f5;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .map-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 70px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-about h3 {
+            color: #ffcc00;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .footer-about p {
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+        
+        .footer-links h4, .footer-social h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile Nav */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: var(--gradient);
+            padding: 40px 30px;
+            z-index: 1001;
+            transition: right 0.4s ease;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+        }
+        
+        .mobile-nav.active {
+            right: 0;
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+            margin-top: 40px;
+        }
+        
+        .mobile-nav li {
+            margin-bottom: 20px;
+        }
+        
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 600;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-desktop {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .services, .gallery, .contact {
+                padding: 70px 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .service-card {
+                margin: 0 10px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>PUSPITA INDAH</h1>
+                    <p>Lembaga Pelatihan Kerja</p>
+                </div>
+            </div>
+            
+            <nav class="nav-desktop">
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#services">Layanan</a></li>
+                    <li><a href="#gallery">Galeri</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="close-menu" id="closeMenuBtn">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#services">Layanan</a></li>
+            <li><a href="#gallery">Galeri</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h2>Lembaga Pelatihan Kerja Puspita Indah</h2>
+            <p>Spesialis dalam pelatihan Jasa Rias Pengantin, Dekorasi, Catering, Tata Kecantikan, dan Tata Busana (Menjahit). Membekali peserta dengan keterampilan profesional untuk siap bekerja atau berwirausaha.</p>
+            <a href="#contact" class="cta-button">Hubungi Kami</a>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Layanan Pelatihan Kami</h2>
+                <p>Kami menyediakan berbagai program pelatihan profesional dengan pengajar berpengalaman di bidangnya.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80" alt="Jasa Rias Pengantin">
+                    </div>
+                    <div class="service-content">
+                        <h3><i class="fas fa-heart service-icon"></i> Jasa Rias Pengantin</h3>
+                        <p>Pelatihan profesional untuk merias pengantin dengan berbagai konsep tradisional dan modern. Mencakup teknik rias wajah, tata rambut pengantin, dan aksesoris.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80" alt="Dekorasi">
+                    </div>
+                    <div class="service-content">
+                        <h3><i class="fas fa-palette service-icon"></i> Dekorasi Acara</h3>
+                        <p>Pelatihan mendesain dan membuat dekorasi untuk berbagai acara seperti pernikahan, ulang tahun, dan acara resmi lainnya. Menggunakan bahan lokal dengan hasil mewah.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80" alt="Catering">
+                    </div>
+                    <div class="service-content">
+                        <h3><i class="fas fa-utensils service-icon"></i> Catering & Kuliner</h3>
+                        <p>Pelatihan memasak, menyajikan, dan mengelola usaha catering. Mulai dari masakan tradisional hingga modern dengan standar higienis dan presentasi menarik.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80" alt="Tata Kecantikan">
+                    </div>
+                    <div class="service-content">
+                        <h3><i class="fas fa-spa service-icon"></i> Tata Kecantikan</h3>
+                        <p>Kursus tata kecantikan kulit dan rambut. Pelatihan perawatan wajah, body treatment, hair styling, dan berbagai teknik kecantikan profesional.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1594736797933-d0a1502c5659?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80" alt="Tata Busana">
+                    </div>
+                    <div class="service-content">
+                        <h3><i class="fas fa-vest service-icon"></i> Tata Busana (Menjahit)</h3>
+                        <p>Pelatihan menjahit dari dasar hingga mahir. Membuat pola, memotong bahan, menjahit manual dan mesin, serta membuat berbagai model pakaian.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80" alt="Sertifikasi">
+                    </div>
+                    <div class="service-content">
+                        <h3><i class="fas fa-certificate service-icon"></i> Sertifikasi Resmi</h3>
+                        <p>Peserta yang lulus akan mendapatkan sertifikat kompetensi dan dibantu penempatan kerja atau pendirian usaha mandiri.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galeri Kegiatan</h2>
+                <p>Dokumentasi kegiatan pelatihan dan hasil karya peserta Puspita Indah</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <!-- Gallery items will be added by JavaScript -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hubungi Kami</h2>
+                <p>Segera daftar untuk mendapatkan pelatihan profesional dari kami</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div>
+                        <h3>Informasi Kontak</h3>
+                        <p>Hubungi kami untuk informasi lebih lanjut tentang program pelatihan</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Hotline Service</h4>
+                            <p>0857.4858.8014</p>
+                            <p>WhatsApp tersedia</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Alamat Lengkap</h4>
+                            <p>Jln Dr. Wahidin SH No 34, BP Randuagung 61121</p>
+                            <p>Sebelah barat Koramil</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Jam Operasional</h4>
+                            <p>Senin - Sabtu: 08.00 - 17.00 WIB</p>
+                            <p>Minggu: 09.00 - 15.00 WIB</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Pendaftaran</h4>
+                            <p>Pendaftaran dibuka setiap bulan. Kuota terbatas untuk setiap kelas.</p>
+                            <p>Gratis konsultasi sebelum memilih program.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        <div class="map-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h4>Lokasi Puspita Indah</h4>
+                        <p>Jln Dr. Wahidin SH No 34, BP Randuagung</p>
+                        <p>Sebelah barat Koramil</p>
+                        <p>Mudah dijangkau dari berbagai daerah</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>PUSPITA INDAH</h3>
+                    <p>Lembaga Pelatihan Kerja yang telah meluluskan ratusan peserta dengan kompetensi siap kerja dan wirausaha sejak 2010. Kami berkomitmen memberikan pelatihan terbaik dengan pengajar berpengalaman.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Program Pelatihan</h4>
+                    <ul>
+                        <li><a href="#services">Jasa Rias Pengantin</a></li>
+                        <li><a href="#services">Dekorasi Acara</a></li>
+                        <li><a href="#services">Catering & Kuliner</a></li>
+                        <li><a href="#services">Tata Kecantikan</a></li>
+                        <li><a href="#services">Tata Busana (Menjahit)</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-social">
+                    <h4>Ikuti Kami</h4>
+                    <p>Ikuti media sosial kami untuk informasi terbaru</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    
+                    <div style="margin-top: 30px;">
+                        <a href="#contact" class="cta-button" style="display: inline-block;">Daftar Sekarang</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Lembaga Pelatihan Kerja Puspita Indah. Semua hak dilindungi.</p>
+                <p style="margin-top: 10px;">Hotline: 0857.4858.8014 | Alamat: Jln Dr. Wahidin SH No 34, BP Randuagung 61121</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNav.classList.add('active');
+        });
+        
+        closeMenuBtn.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+            });
+        });
+        
+        // Gallery Images
+        const galleryImages = [
+            {url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80", title: "Pelatihan Rias Pengantin"},
+            {url: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80", title: "Kursus Tata Kecantikan"},
+            {url: "https://images.unsplash.com/photo-1594736797933-d0a1502c5659?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80", title: "Pelatihan Menjahit"},
+            {url: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80", title: "Pelatihan Catering"},
+            {url: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80", title: "Pelatihan Dekorasi"},
+            {url: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80", title: "Sertifikasi Peserta"},
+            {url: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80", title: "Kelas Tata Rias"},
+            {url: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80", title: "Hasil Karya Peserta"}
+        ];
+        
+        // Populate gallery
+        const galleryGrid = document.querySelector('.gallery-grid');
+        galleryImages.forEach(image => {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+            galleryItem.innerHTML = `
+                <img src="${image.url}" alt="${image.title}">
+                <div class="gallery-overlay">
+                    <h4>${image.title}</h4>
+                </div>
+            `;
+            galleryGrid.appendChild(galleryItem);
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.padding = '10px 0';
+                header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+            } else {
+                header.style.padding = '15px 0';
+                header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+            }
+        });
+    </script>
+</body>
+</html>
